@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title hash-title>#{title}</title>
+</head>
+
+<body>
+    <div hash-obj hash-each id="#{id}">
+        <h1>#{name} </h1>
+        <p>tem #{idade} de idade, tem uma filha chamada #{filha} e ela é #{t.isGood} menina</p>
+    </div>
+    <!-- <div hash-Obj>
+        <p hash-each>Sexo #{name} #{title}</p>
+    </div> -->
+    <h1>#{ the_title } #{name }</h1>
+    <p class="js-bound-quote">My favorite {{ movie }} quote is "{{ quote }}".</p>
+    <script src="hashtag.js"></script>
+
+    <script>
+        // var selector = document.querySelector('[hash-obj]');
+
+        // console.log(selector.attributes);
+        // let data_blob = {
+        //     movie: 'Iron Man',
+        //     quote: 'They say that the best weapon is the one you never have to fire.'
+        // }
+
+        // const quote_data = new Proxy(data_blob, {
+        //     set: (target, property, value) => {
+        //         target[property] = value;
+        //         quote_node.render(data_blob)
+        //     }
+        // })
+        //const quote_node = document.querySelector('.js-bound-quote')
+
+        // quote_node.template = quote_node.innerHTML
+        // quote_node.render = function render(data) {
+        //     this.innerHTML = this.template.replace(/\{\{\s?(\w+)\s?\}\}/g, (match, variable) => {
+        //         return data[variable] || ''
+        //     })
+        // }
+        // console.log(quote_node.render(data_blob))
+
+        // const quotes = [
+        //     "What is the point of owning a race car if you can't drive it?",
+        //     "Give me a scotch, I'm starving.",
+        //     "I'm a huge fan of the way you lose control and turn into an enourmous green rage monster.",
+        //     "I already told you, I don't want to join your super secret boy band.",
+        //     "You know, it's times like these when I realize what a superhero I am."
+        // ]
+
+        // window.setInterval(() => {
+        //     const quote_number = Math.floor(Math.random() * quotes.length)
+        //     quote_data.quote = quotes[quote_number]
+        //     quote_data.movie = quotes[quote_number]
+        // }, 2000)
+
+        // hash.hashEngine([{
+        //     //selector: '#person',
+        //     title: 'hashtag your js',
+        //     data: {
+        //         id: '1',
+        //         name: 'antonio lopes',
+        //         idade: 25,
+        //         filha: "eliana",
+        //         title: '#your life',
+        //         sexo: {
+        //             masculino: "maculino",
+        //             femenino: "femenino",
+        //         },
+        //         t: {
+        //             isGood: "boa"
+        //         }
+        //     }
+        // }])
+
+
+        // var Unitys = [{
+        //     key: 1,
+        //     ext: 'um'
+        // }, {
+        //     key: 2,
+        //     ext: 'dois'
+        // }, {
+        //     key: 3,
+        //     ext: 'tres'
+        // }, {
+        //     key: 4,
+        //     ext: 'quatro'
+        // }, {
+        //     key: 5,
+        //     ext: 'cinco'
+        // }, {
+        //     key: 6,
+        //     ext: 'sex'
+        // }, {
+        //     key: 7,
+        //     ext: 'sete'
+        // }, {
+        //     key: 8,
+        //     ext: 'oito'
+        // }, {
+        //     key: 9,
+        //     ext: 'nove'
+        // }, {
+        //     key: 10,
+        //     ext: 'dez'
+        // }, {
+        //     key: 11,
+        //     ext: 'onze'
+        // }, {
+        //     key: 12,
+        //     ext: 'doze'
+        // }, {
+        //     key: 13,
+        //     ext: 'treze'
+        // }, {
+        //     key: 14,
+        //     ext: 'quatroze'
+        // }, {
+        //     key: 15,
+        //     ext: 'quize'
+        // }, {
+        //     key: 100,
+        //     ext: 'mil'
+        // }, {
+        //     key: 120,
+        //     ext: 'cento e vinte'
+        // }, {
+        //     key: 1200,
+        //     ext: 'mil e dozentos'
+        // }, {
+        //     key: 1000,
+        //     ext: 'mil'
+        // }]
+
+
+        // function retunExt(numbers) {
+
+        //     const newAr = Unitys.filter(i => {
+        //         if (i.key === numbers) {
+        //             return i.ext;
+        //         }
+        //     })
+        //     return newAr.map(i => {
+        //         return i.ext;
+        //     })[0]
+        // }
+
+        // console.log(retunExt(13))
+
+
+
+        // var Unitys = [{
+        //     Unidade: ['zero', 'um', 'dois', 'tres', 'quatro', 'cinco', 'seis', 'sete', 'oito', 'nove']
+        // }, {
+        //     Dezenas: ['dez', 'onze', 'doze', 'treze', 'quatorze', 'quinze', 'dezesseis', 'dezessete', 'dezoito', 'dezanove']
+        // }, {
+        //     double: [{
+        //         key: 20,
+        //         ext: 'vinte'
+        //     }, {
+        //         key: 30,
+        //         ext: 'trinta'
+        //     }, {
+        //         key: 50,
+        //         ext: 'cinquenta'
+        //     }, {
+        //         key: 60,
+        //         ext: 'sessenta'
+        //     }, {
+        //         key: 70,
+        //         ext: 'setenta'
+        //     }, {
+        //         key: 80,
+        //         ext: 'oitenta'
+        //     }, {
+        //         key: 90,
+        //         ext: 'noventa'
+        //     }]
+        // }, {
+
+        // }]
+
+        // function Smart(num) {
+        //     if (num.toString().length === 1) {
+        //         return Unitys[0].Unidade[num];
+        //     } else if (num.toString().length === 2) {
+        //         if (num < 10) {
+        //             return Unitys[0].Unidade[num];
+        //         } else if (num >= 10 && num < 20) {
+        //             return Unitys[0].Unidade.concat(Unitys[1].Dezenas)[num];
+        //         } else {
+        //             var left = num.toString().split('')[1],
+        //                 right = num.toString().split('')[0];
+        //             if (left !== '0') {
+        //                 left === num.toString().split('')[0] ? num = (right + left.replace(left, '0')) * 1 : num = num.toString().replace(left, '0') * 1;
+        //                 const newAr = Unitys[2].double.filter(i => {
+        //                     if (i.key === num) {
+        //                         return i.ext;
+        //                     }
+        //                 })
+        //                 left = Unitys[0].Unidade[left];
+        //                 return newAr.map(i => {
+        //                     return `${i.ext} e ${left}`;
+        //                 })[0]
+        //             } else {
+        //                 const newAr = Unitys[2].double.filter(i => {
+        //                     if (i.key === num) {
+        //                         return i.ext;
+        //                     }
+        //                 })
+        //                 left = Unitys[0].Unidade[left];
+        //                 return newAr.map(i => {
+        //                     return `${i.ext}`;
+        //                 })[0]
+        //             }
+        //         }
+        //     }
+        // }
+
+        // console.log(Smart(33))
+
+
+
+
+        const Users = [{
+            id: 1,
+            name: 'Antonio Lopes',
+            idade: 25
+        }, {
+            id: 2,
+            name: 'Satuta',
+            idade: 23
+        }, {
+            id: 3,
+            name: 'Trindade',
+            idade: 22
+        }, {
+            id: 4,
+            name: 'Oliveira',
+            idade: 22
+        }, {
+            id: 5,
+            name: 'Pedro',
+            idade: 21
+        }, {
+            id: 6,
+            name: 'João',
+            idade: 20
+        }];
+
+
+
+        Users.filter(item => {
+            console.log(item)
+        })
+
+        // var linha = [1, 2, 3, 4];
+        // var coluna = [1, 2, 3, 4];
+        // var newArray = [];
+        // for (var i = 0; i < linha.length; i++) {
+        //     for (var j = 0; j < coluna.length; j++) {
+        //         if (i < j) {
+
+        //             console.log(i)
+        //             console.log(j)
+        //         }
+        //     }
+        // }
+        // console.log(newArray)
+        // function SomaToMulti(one, two) {
+        //     s = 0;
+        //     if (typeof(one) === 'number' && typeof(two) === 'number') {
+        //         if (one.toString().includes('.')) {
+        //             for (var i = 0; i < one; i++) {
+        //                 s += one;
+        //             }
+        //         } else if (two.toString().includes('.')) {
+        //             for (var i = 0; i < one; i++) {
+        //                 s += two;
+        //             }
+        //         } else if (!two.toString().includes('.') && !two.toString().includes('.')) {
+        //             for (var i = 0; i < one; i++) {
+        //                 s += one;
+        //             }
+        //         }
+        //         return s;
+        //     } else {
+        //         console.error('the parameters must be int')
+        //     }
+        // }
+        // console.log(SomaToMulti(0, 2.1))
+
+        // var dic = 'abcdefghiklmnopkrstuvxwyz';
+
+        // function returnJava(str) {
+        //     var dicArray = dic.split('');
+        //     var s = '';
+        //     dicArray.filter(a => {
+        //         console.log(a)
+        //     })
+        //     str.split('').filter(i => {
+        //         if (dicArray.indexOf(i) > -1) {
+        //             s += i;
+        //         }
+        //     })
+        //     str != s ? console.error('Palavra contém caracteres que não existe no alfabeto') : console.log(s);
+        // }
+        // returnJava('javas')
+
+        // function returnjava() {
+        //     var dic = 'abcdefghijklmnopkrstuvxwyz';
+        //     var dicarray = dic.split('');
+        //     var s = '';
+        //     const result = dicarray.filter(a => {
+        //         console.log(a)
+        //         s = dic[9] + dic[0] + dic[21] + dic[0];
+        //     })
+
+        //     console.log(s)
+        // }
+        // returnjava()
+
+        // function count(i) {
+        //     if (i >= 100) {
+        //         return;
+        //     } else {
+        //         i++;
+        //         console.log(i)
+        //         count(i)
+
+        //     }
+        // }
+
+        // function countStartWithEndWith(start, end) {
+        //     if (start >= end) {
+        //         return;
+        //     } else {
+        //         console.log(start)
+        //         start++;
+
+        //         count(start)
+
+        //     }
+        // }
+
+        // function countStartWithEndWithwhile(start, end) {
+
+        //     while (start <= end) {
+
+        //         start++;
+        //         console.log(start);
+        //         // countStartWithEndWithwhile(start)
+        //     }
+
+        // }
+        // // count(1)
+        // countStartWithEndWithwhile(1, 100)
+        /*loop through the parent elements
+        hashBind.forEach((ts) => {
+               // loop through the child element and get & set textContent
+               Array.from(ts.children).forEach((t) => {
+                   var htmText = t.textContent, // get text of the html element
+                       strArray = htmText.split(' '); //transform string into array of string
+
+                   hashActionsAttr(t)
+                       //loop through the string array splited
+                   strArray.forEach(str => {
+                       //check if the string is into the pattern
+                       if (checkPattern(str)) {
+                           //get the property on the the pattern in the DOM
+                           var value = str.slice(2, str.lastIndexOf(pattern[1]))
+                           if (value.includes('.')) {
+                               //convert string to property and value receive the result
+                               value = convertStringToProps(value, properties);
+                               //replace the pattern to value of the object
+                               htmText = htmText.replace(str, value)
+                           } else {
+                               //check if value exist on same property
+                               if (properties.hasOwnProperty(value) && value !== null) {
+                                   //replace the pattern to value of the object
+                                   htmText = htmText.replace(str, properties[value])
+                               }
+                           }
+                       }
+                   });
+                   //set value from object to inner html binded
+                   t.textContent = htmText;
+               })
+
+           })*/
+
+        /*
+                    var pattern = /\#\{\s?([\w.]+)\s?\}/g;
+                    var h1 = document.querySelector('[hash-Obj]');
+                    var renderBody = document.querySelector('body');
+                    var data = {
+                        the_title: 'hello!',
+                        name: 'Antonio Lopes',
+                        idade: 25,
+                        filha: "Eliana Candengue Lopes",
+                        t: {
+                            isGood: 'yes'
+                        }
+                    }
+
+
+                    var newh1 = h1.outerHTML;
+                    h1.remove();
+
+                    renderBody.innerHTML += render(newh1, data);
+
+        
+
+
+                    */
+        //() ! function(e, t) {
+
+        //     "use strict";
+        //     "object" == typeof module && "object" == typeof module.exports ? module.exports = e.document ? t(e, !0) :
+        //         function(e) {
+        //             if (!e.document) throw new Error("jQuery requires a window with a document");
+        //             return t(e)
+        //         } :
+        //         t(e)
+        // }("undefined" != typeof window ? window : this, function(e, t) {
+        //     console.log(window)
+        // })
+
+        // var matches = document.querySelector('[hash-each]'),
+        //     parentNode = matches.parentElement;
+
+        // var template = matches.outerHTML,
+        //     pattern = ['#{', '}'],
+        //     result = '';
+        // var data = [{}, {}, {}];
+
+        // data.map(i => {
+        //     result += template;
+        // })
+        // parentNode.innerHTML = result;
+
+        // function isEmptyStr(str) {
+        //     return str === '' ? true : false;
+        // }
+
+
+        // hashtag([{
+        //     element: '#person',
+        //     title: 'hashtag your js',
+        //     data: {
+        //         id: '1',
+        //         name: 'antonio lopes',
+        //         idade: 25,
+        //         filha: "eliana",
+        //         title: '#your life',
+        //         sexo: {
+        //             masculino: "maculino",
+        //             femenino: "femenino",
+        //         }
+        //     }
+        // }])
+    </script>
+</body>
+
+</html>
