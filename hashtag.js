@@ -203,25 +203,52 @@ var hash;
 (function(e, t) {
 
 
-    /**@description
-     * Clousures
-     * 
-     **/
+    const doAttribute = function(attr) {
+
+        }
+        /**@description
+         * Clousures
+         * 
+         **/
 
     function hashActionsAttr(el, i) {
-
+        let parent = el.parentElement;
         switch (i) {
             case 'hash-each':
                 {
-                    console.log(i)
+                    parent.innerHTML = '';
+                    this.data.forEach(data => {
+                        let result = render(el.outerHTML, data).replace('hash-each=""', '')
+                        if (result.includes('key="')) {
+                            parent.innerHTML += result;
+                        } else {
+                            console.warn('The key must be declarated and unique value');
+                        }
+                    })
+
+                    const keys = Array.from(parent.querySelectorAll('[key]')),
+                        aux = [];
+                        
+                    keys.map(key => {
+                        key = key.getAttribute('key');
+                        if (aux.indexOf(key) > -1) {
+                            console.warn('The key unique')
+                        } else {
+                            aux.push(key)
+                        }
+                    })
+
+                    parent.outerHTML.replace('fragment', 'div')
                     break;
                 }
             case 'hash-obj':
                 {
-                    console.log(i)
+                    parent.innerHTML = '';
+                    parent.innerHTML = render(el.outerHTML, this.data)
                     break;
                 }
         }
+
     }
 
     function getAllAttributes(element) {
@@ -266,26 +293,26 @@ var hash;
 
     doEngine = function(hashData) {
         this.pattern = /\#\{\s?([\w.]+)\s?\}/g; // declaration of the pattern
-        this.hash_selector = hashData.selector || '[hash-obj]';
+        this.hash_selector = hashData.selector || '[hash-parent]';
         this.data = hashData.data; // set obj to the property variable
         this.HASH_ACTIONS_TYPE = ['hash-obj', 'hash-each', 'hash-events']
         hashData.title !== undefined ? document.querySelector('[hash-title]').textContent = hashData.title : '';
 
 
         //convert elemet child of hash-obj attribute to array of child element
-        var hashBind = Array.from(document.querySelectorAll(hash_selector));
+        var hashBind = Array.from(document.querySelector(hash_selector).children);
+
         hashBind.map(hashB => {
-            this.element = hashB;
-            this.matchAttrs = getAttrsStartWith.call(this, 'hash-');
+                this.element = hashB;
+                this.matchAttrs = getAttrsStartWith.call(this, 'hash-');
 
-            this.matchAttrs.forEach(i => {
-                checkHashAction.call(this, i) ? hashActionsAttr(hashB, i) : '';
+                this.matchAttrs.forEach(i => {
+                    checkHashAction.call(this, i) ? hashActionsAttr.call(this, hashB, i) : '';
+                })
             })
-
-
-        })
-
-        // hashBind[0].parentElement.innerHTML = render.call(this, hashBind[0].outerHTML, data)
+            // console.log(document.querySelector('body').innerHTML)
+            // document.querySelector('body').innerHTML = document.querySelector('body').innerHTML.replace('fragment', 'div')
+            // hashBind[0].parentElement.innerHTML = render.call(this, hashBind[0].outerHTML, data)
     }
 
     /** Statics Methods */

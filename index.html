@@ -9,15 +9,22 @@
 </head>
 
 <body>
-    <div hash-obj hash-each id="#{id}">
-        <h1>#{name} </h1>
-        <p>tem #{idade} de idade, tem uma filha chamada #{filha} e ela é #{t.isGood} menina</p>
-    </div>
+    <fragment hash-parent id="parent">
+        <div hash-each key="#{id}">
+            <h1>#{name} </h1>
+            <p>tem #{idade} de idade, tem uma filha chamada #{filha} e ela é #{t.isGood} menina</p>
+        </div>
+    </fragment>
+
+    <fragment hash-parent id="simple">
+        <div hash-obj>
+            <h1>#{ name }</h1>
+        </div>
+    </fragment>
+
     <!-- <div hash-Obj>
         <p hash-each>Sexo #{name} #{title}</p>
     </div> -->
-    <h1>#{ the_title } #{name }</h1>
-    <p class="js-bound-quote">My favorite {{ movie }} quote is "{{ quote }}".</p>
     <script src="hashtag.js"></script>
 
     <script>
@@ -59,24 +66,56 @@
         //     quote_data.movie = quotes[quote_number]
         // }, 2000)
 
-        // hash.hashEngine([{
-        //     //selector: '#person',
-        //     title: 'hashtag your js',
-        //     data: {
-        //         id: '1',
-        //         name: 'antonio lopes',
-        //         idade: 25,
-        //         filha: "eliana",
-        //         title: '#your life',
-        //         sexo: {
-        //             masculino: "maculino",
-        //             femenino: "femenino",
-        //         },
-        //         t: {
-        //             isGood: "boa"
-        //         }
-        //     }
-        // }])
+        hash.hashEngine([{
+            selector: '#parent',
+            title: 'hashtag your js',
+            data: [{
+                id: '1',
+                name: 'António Ferraz Lopes',
+                idade: 25,
+                filha: "eliana",
+                title: '#your life',
+                sexo: {
+                    masculino: "maculino",
+                    femenino: "femenino",
+                },
+                t: {
+                    isGood: "boa"
+                }
+            }, {
+                id: '2',
+                name: 'Leonel dos Anjos',
+                idade: 25,
+                filha: "eliana",
+                title: '#your life',
+                sexo: {
+                    masculino: "maculino",
+                    femenino: "femenino",
+                },
+                t: {
+                    isGood: "boa"
+                }
+            }]
+        }])
+
+        hash.hashEngine([{
+            selector: '#simple',
+            title: 'hashtag your js',
+            data: {
+                id: '1',
+                name: 'António Ferraz Lopes',
+                idade: 25,
+                filha: "eliana",
+                title: '#your life',
+                sexo: {
+                    masculino: "maculino",
+                    femenino: "femenino",
+                },
+                t: {
+                    isGood: "boa"
+                }
+            }
+        }])
 
 
         // var Unitys = [{
@@ -226,40 +265,6 @@
         // console.log(Smart(33))
 
 
-
-
-        const Users = [{
-            id: 1,
-            name: 'Antonio Lopes',
-            idade: 25
-        }, {
-            id: 2,
-            name: 'Satuta',
-            idade: 23
-        }, {
-            id: 3,
-            name: 'Trindade',
-            idade: 22
-        }, {
-            id: 4,
-            name: 'Oliveira',
-            idade: 22
-        }, {
-            id: 5,
-            name: 'Pedro',
-            idade: 21
-        }, {
-            id: 6,
-            name: 'João',
-            idade: 20
-        }];
-
-
-
-        Users.filter(item => {
-            console.log(item)
-        })
-
         // var linha = [1, 2, 3, 4];
         // var coluna = [1, 2, 3, 4];
         // var newArray = [];
@@ -396,29 +401,29 @@
            })*/
 
         /*
-                    var pattern = /\#\{\s?([\w.]+)\s?\}/g;
-                    var h1 = document.querySelector('[hash-Obj]');
-                    var renderBody = document.querySelector('body');
-                    var data = {
-                        the_title: 'hello!',
-                        name: 'Antonio Lopes',
-                        idade: 25,
-                        filha: "Eliana Candengue Lopes",
-                        t: {
-                            isGood: 'yes'
-                        }
-                    }
+                                var pattern = /\#\{\s?([\w.]+)\s?\}/g;
+                                var h1 = document.querySelector('[hash-Obj]');
+                                var renderBody = document.querySelector('body');
+                                var data = {
+                                    the_title: 'hello!',
+                                    name: 'Antonio Lopes',
+                                    idade: 25,
+                                    filha: "Eliana Candengue Lopes",
+                                    t: {
+                                        isGood: 'yes'
+                                    }
+                                }
 
 
-                    var newh1 = h1.outerHTML;
-                    h1.remove();
+                                var newh1 = h1.outerHTML;
+                                h1.remove();
 
-                    renderBody.innerHTML += render(newh1, data);
+                                renderBody.innerHTML += render(newh1, data);
 
         
 
 
-                    */
+                                */
         //() ! function(e, t) {
 
         //     "use strict";
