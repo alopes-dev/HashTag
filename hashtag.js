@@ -228,7 +228,7 @@ var hash;
 
                     const keys = Array.from(parent.querySelectorAll('[key]')),
                         aux = [];
-                        
+
                     keys.map(key => {
                         key = key.getAttribute('key');
                         if (aux.indexOf(key) > -1) {
