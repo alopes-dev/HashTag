@@ -64,8 +64,7 @@ var hashtag = (function(selector) {
                 var htmText = t.textContent, // get text of the html element
                     strArray = htmText.split(' '); //transform string into array of string
 
-                hashActionsAttr(t)
-                    //loop through the string array splited
+                //loop through the string array splited
                 strArray.forEach(str => {
                     //check if the string is into the pattern
                     if (checkPattern(str)) {
@@ -205,50 +204,71 @@ var hash;
 
     const doAttribute = function(attr) {
 
-        }
-        /**@description
-         * Clousures
-         * 
-         **/
+    }
+
+    /**@description
+     * Clousures
+     * 
+     **/
+
+
 
     function hashActionsAttr(el, i) {
-        let parent = el.parentElement;
+        let parent = el.parentElement,
+            text = '';
+        //parent.innerHTML = '';
         switch (i) {
             case 'hash-each':
                 {
-                    parent.innerHTML = '';
+
                     this.data.forEach(data => {
-                        let result = render(el.outerHTML, data).replace('hash-each=""', '')
-                        if (result.includes('key="')) {
-                            parent.innerHTML += result;
-                        } else {
-                            console.warn('The key must be declarated and unique value');
-                        }
-                    })
+                        let result = render(el.outerHTML, data).replace(`${i}=""`, '')
+                        if (!result.includes('key="')) console.warn('The key attribute must be declarated and unique value');
+                        text += result;
+                    });
+                    //pegar o elementos anterios e posterios concatenando com resultado do text
+                    text = getPrevSiblingsAsOutHtml(el, '') + text + getNextSiblingsAsOutHtml(el, '');
 
-                    const keys = Array.from(parent.querySelectorAll('[key]')),
+                    const keys = Array.from(replaceFragment(parent, text).querySelectorAll('[key]')),
                         aux = [];
-
-                    keys.map(key => {
+                    keys.forEach(key => {
                         key = key.getAttribute('key');
-                        if (aux.indexOf(key) > -1) {
-                            console.warn('The key unique')
-                        } else {
-                            aux.push(key)
-                        }
-                    })
-
-                    parent.outerHTML.replace('fragment', 'div')
+                        aux.indexOf(key) > -1 ? console.warn('The key must be unique') : aux.push(key)
+                    });
                     break;
                 }
             case 'hash-obj':
                 {
-                    parent.innerHTML = '';
-                    parent.innerHTML = render(el.outerHTML, this.data)
+                    //pegar o elementos anterios e posterios concatenando com resultado do render
+                    text = getPrevSiblingsAsOutHtml(el, '') + render(el.outerHTML, this.data).replace(`${i}=""`, '') + getNextSiblingsAsOutHtml(el, '');
+                    replaceFragment(parent, text);
                     break;
                 }
+            case 'hash-attr':
+                {
+                    var t = document.querySelector(`[${this.attrToBind}]`)
+                    console.log(this.attrToBind)
+                    console.log(t)
+                }
         }
+    }
 
+    function getNextSiblingsAsOutHtml(element, outerHTML) {
+        let nextEl = element.nextElementSibling;
+        if (nextEl) {
+            outerHTML += nextEl.outerHTML;
+            outerHTML = getNextSiblingsAsOutHtml(nextEl, outerHTML);
+        }
+        return outerHTML;
+    }
+
+    function getPrevSiblingsAsOutHtml(element, outerHTML) {
+        let prevEl = element.previousElementSibling;
+        if (prevEl) {
+            outerHTML += prevEl.outerHTML;
+            outerHTML = getPrevSiblingsAsOutHtml(prevEl, outerHTML);
+        }
+        return outerHTML;
     }
 
     function getAllAttributes(element) {
@@ -263,8 +283,32 @@ var hash;
         }
     }
 
+    function replaceFragment(element, text) {
+        let id = element.getAttribute('id'),
+            errorMessage = '';
+        try {
+            if (id !== null) {
+                let old = document.getElementById(id),
+                    div = document.createElement("div");
+                if (old.localName !== 'fragment') { errorMessage = `The parent tag must be a fragment: not a ${old.localName}`; throw new Error(); return; }
+
+                div.setAttribute('id', id);
+                div.innerHTML = text;
+                old.parentNode.replaceChild(div, old);
+                return document.querySelector('#' + id)
+            } else { errorMessage = 'The fragment must have a id attribute'; throw new Error(); return; };
+        } catch (error) {
+            throw new Error(errorMessage);
+        }
+    }
+
     function checkHashAction(i) {
         return this.HASH_ACTIONS_TYPE.indexOf(i) > -1;
+    }
+
+    function checkAttr(t) {
+        var tt = document.querySelector(`[${t}]`);
+        getChildAttrs(tt)
     }
 
     function getAttrsStartWith(attr) {
@@ -273,7 +317,18 @@ var hash;
             i.name.indexOf(attr) > -1 ? t.push(i.name.toString().replace('=""', '')) : ''
             return t;
         }, [])
+    }
 
+    function getChildAttrs(parent) {
+        Array.from(parent.children).forEach(i => {
+            console.log(i)
+        })
+        console.log(document.querySelector('[hash-event-onclick]'))
+        document.querySelector('[hash-event-onclick]').addEventListener('click', function() {
+            this.methods.add()
+            debugger
+
+        })
     }
 
     function render(template, data) {
@@ -295,24 +350,24 @@ var hash;
         this.pattern = /\#\{\s?([\w.]+)\s?\}/g; // declaration of the pattern
         this.hash_selector = hashData.selector || '[hash-parent]';
         this.data = hashData.data; // set obj to the property variable
-        this.HASH_ACTIONS_TYPE = ['hash-obj', 'hash-each', 'hash-events']
+        this.methods = hashData.functions;
+        this.HASH_ACTIONS_TYPE = ['hash-obj', 'hash-each', 'hash-event', 'hash-attr'];
         hashData.title !== undefined ? document.querySelector('[hash-title]').textContent = hashData.title : '';
-
 
         //convert elemet child of hash-obj attribute to array of child element
         var hashBind = Array.from(document.querySelector(hash_selector).children);
 
         hashBind.map(hashB => {
-                this.element = hashB;
-                this.matchAttrs = getAttrsStartWith.call(this, 'hash-');
-
-                this.matchAttrs.forEach(i => {
-                    checkHashAction.call(this, i) ? hashActionsAttr.call(this, hashB, i) : '';
-                })
+            this.element = hashB;
+            this.matchAttrs = getAttrsStartWith.call(this, 'hash-');
+            this.matchAttrs.forEach(i => {
+                if (i.includes(':')) {
+                    this.attrToBind = i.split(':')[1];
+                    i = i.split(':')[0];
+                }
+                checkHashAction.call(this, i) ? hashActionsAttr.call(this, hashB, i) : '';
             })
-            // console.log(document.querySelector('body').innerHTML)
-            // document.querySelector('body').innerHTML = document.querySelector('body').innerHTML.replace('fragment', 'div')
-            // hashBind[0].parentElement.innerHTML = render.call(this, hashBind[0].outerHTML, data)
+        })
     }
 
     /** Statics Methods */
@@ -335,6 +390,8 @@ var hash;
             return;
 
 
+
+
         /**@description 
          *  
          **/
@@ -348,7 +405,6 @@ var hash;
 
     /**Binding  */
     hash.hashEngine = function(target) {
-
         if (Array.isArray(target)) {
             target.map(iTarget => {
                 doEngine(iTarget)
@@ -356,7 +412,6 @@ var hash;
         } else {
             doEngine(target)
         }
-
     }
 
 })("undefined" != typeof window ? window : this, function(e, t) {

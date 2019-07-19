@@ -9,17 +9,35 @@
 </head>
 
 <body>
+
+    <fragment hash-form>
+        <form hash-mainObject="Person">
+            <input type="text" name="Name" value="Antonio" hash-childOf="Person">
+            <input type="text" name="Idade" value="25" hash-childOf="Person">
+        </form>
+        <!-- <form hash-mainObject="Person">
+            <input type="text" name="Name" hash-childOf="Person">
+            </div>
+        </form> -->
+    </fragment>
+
     <fragment hash-parent id="parent">
+        <p>Elias Matumona First</p>
         <div hash-each key="#{id}">
             <h1>#{name} </h1>
             <p>Tem #{idade} de idade, tem uma filha chamada #{filha} e ela é #{t.isGood} menina </p>
         </div>
+        <p>Elias Matumona</p>
     </fragment>
 
     <fragment hash-parent id="simple">
+        <p>João</p>
         <div hash-obj>
             <h1>#{ name }</h1>
         </div>
+        <p>Antonio Ferraz Lopes</p>
+        <a>João</a>
+        <div>Antonio Lopes</div>
     </fragment>
 
     <!-- <div hash-Obj>
@@ -28,6 +46,32 @@
     <script src="hashtag.js"></script>
 
     <script>
+        var activeElement = document.querySelector('[hash-obj]');
+        const form = document.querySelector('[hash-form]');
+
+        const mainObject = Array.from(form.querySelectorAll('[hash-mainObject]'));
+
+        mainObject.length > 1 ? console.warn('In the form container of the fragment tag must only have one main object, delete one of them objects') : console.log(mainObject)
+
+        let ObjectName = mainObject[0].getAttribute('hash-mainObject');
+
+        const obj = {};
+        obj[ObjectName] = null;
+
+        let _tempData = {}
+        Array.from(mainObject[0].querySelectorAll('[name]'))
+            .forEach(child => {
+                if (child.hasAttribute('hash-childOf')) {
+                    _tempData[child.getAttribute('name')] = child.value;
+                    child.getAttribute('hash-childOf')
+                }
+            })
+
+        obj[ObjectName] = _tempData;
+        console.log(obj)
+
+
+        // console.log(getPrevSiblingsAsOutHtml(activeElement, ''))
         // var selector = document.querySelector('[hash-obj]');
 
         // console.log(selector.attributes);
@@ -52,6 +96,7 @@
         // }
         // console.log(quote_node.render(data_blob))
 
+
         // const quotes = [
         //     "What is the point of owning a race car if you can't drive it?",
         //     "Give me a scotch, I'm starving.",
@@ -66,7 +111,14 @@
         //     quote_data.movie = quotes[quote_number]
         // }, 2000)
 
+        // var numbers = [10, 15, 24, 88, 90, 29, 39]; // 34
+        // numbers.forEach(i => {  
+        //     var de = i.toString()[0] + '0';
+        //     console.log(`${i.toString()[0]*1}0 + ${i.toString()[1]*1} is ${ de*1  + i.toString()[1]*1}`)
 
+        // })
+
+        //TT(1)
         // const numbers = [1, 2, 4, 5, 6, 7, 8, 9, 10];
 
         // const newArray = numbers.filter(num => {
@@ -76,56 +128,82 @@
         // })
 
         //console.log(newArray)
-        // hash.hashEngine([{
-        //     selector: '#parent',
-        //     title: 'hashtag your js',
-        //     data: [{
-        //         id: '1',
-        //         name: 'António Ferraz Lopes',
-        //         idade: 25,
-        //         filha: "Eliana",
-        //         title: '#your life',
-        //         sexo: {
-        //             masculino: "maculino",
-        //             femenino: "femenino",
-        //         },
-        //         t: {
-        //             isGood: "boa"
-        //         }
-        //     }, {
-        //         id: '2',
-        //         name: 'Leonel dos Anjos',
-        //         idade: 25,
-        //         filha: "eliana",
-        //         title: '#your life',
-        //         sexo: {
-        //             masculino: "maculino",
-        //             femenino: "femenino",
-        //         },
-        //         t: {
-        //             isGood: "boa"
-        //         }
-        //     }]
-        // }])
 
-        // hash.hashEngine([{
-        //     selector: '#simple',
-        //     title: 'hashtag your js',
-        //     data: {
-        //         id: '1',
-        //         name: 'António Ferraz Lopes',
-        //         idade: 25,
-        //         filha: "eliana",
-        //         title: '#your life',
-        //         sexo: {
-        //             masculino: "maculino",
-        //             femenino: "femenino",
-        //         },
-        //         t: {
-        //             isGood: "boa"
-        //         }
-        //     }
-        // }])
+        // hashtag('#simple').setStyle('display', 'none');
+        hash.hashEngine([{
+            //selector: '#parent',
+            title: 'Hashtag your js',
+            data: [{
+                id: '1',
+                name: 'António Ferraz Lopes',
+                idade: 25,
+                filha: "Eliana",
+                title: '#your life',
+                web: 'www.google.com',
+                sexo: {
+                    masculino: "maculino",
+                    femenino: "femenino",
+                },
+                t: {
+                    isGood: "boa"
+                }
+
+            }, {
+                id: '2',
+                name: 'Leonel dos Anjos',
+                idade: 25,
+                filha: "eliana",
+                title: '#your life',
+                sexo: {
+                    masculino: "maculino",
+                    femenino: "femenino",
+                },
+                t: {
+                    isGood: "boa"
+                }
+            }, {
+                id: '3',
+                name: 'Afonso Matumona',
+                idade: 25,
+                filha: "eliana",
+                title: '#your life',
+                sexo: {
+                    masculino: "maculino",
+                    femenino: "femenino",
+                },
+                t: {
+                    isGood: "boa"
+                }
+            }],
+            functions: {
+                add: function() {
+                    alert();
+                }
+            }
+
+
+        }])
+
+        hash.hashEngine([{
+            selector: '#simple',
+            title: 'Hashtag your js',
+            data: {
+                id: '2',
+                name: 'António Ferraz Lopes',
+                idade: 25,
+                filha: "eliana",
+                title: '#your life',
+                sexo: {
+                    masculino: "maculino",
+                    femenino: "femenino",
+                },
+                t: {
+                    isGood: "boa"
+                }
+            }
+        }])
+
+
 
 
         // var Unitys = [{
@@ -411,29 +489,29 @@
            })*/
 
         /*
-                                var pattern = /\#\{\s?([\w.]+)\s?\}/g;
-                                var h1 = document.querySelector('[hash-Obj]');
-                                var renderBody = document.querySelector('body');
-                                var data = {
-                                    the_title: 'hello!',
-                                    name: 'Antonio Lopes',
-                                    idade: 25,
-                                    filha: "Eliana Candengue Lopes",
-                                    t: {
-                                        isGood: 'yes'
+                                    var pattern = /\#\{\s?([\w.]+)\s?\}/g;
+                                    var h1 = document.querySelector('[hash-Obj]');
+                                    var renderBody = document.querySelector('body');
+                                    var data = {
+                                        the_title: 'hello!',
+                                        name: 'Antonio Lopes',
+                                        idade: 25,
+                                        filha: "Eliana Candengue Lopes",
+                                        t: {
+                                            isGood: 'yes'
+                                        }
                                     }
-                                }
 
 
-                                var newh1 = h1.outerHTML;
-                                h1.remove();
+                                    var newh1 = h1.outerHTML;
+                                    h1.remove();
 
-                                renderBody.innerHTML += render(newh1, data);
+                                    renderBody.innerHTML += render(newh1, data);
 
         
 
 
-                                */
+                                    */
         //() ! function(e, t) {
 
         //     "use strict";
