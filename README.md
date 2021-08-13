@@ -1,6 +1,6 @@
 # HashTag
 hash is a library and two way data bind , to help you use javascript so fast in your web page
-<img  style="border-radius:50%" src="https://user-images.githubusercontent.com/49714406/117550268-51620400-b037-11eb-86e6-9c2d47bb6bca.png" align="start" alt="GitHub Readme Stats" />
+<img width="100px"  style="border-radius:50%" src="https://user-images.githubusercontent.com/49714406/117550268-51620400-b037-11eb-86e6-9c2d47bb6bca.png"  alt="GitHub Readme Stats" />
 # Abastece-UÍ
 
 > Awesome React UI Kit
