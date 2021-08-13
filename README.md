@@ -1,6 +1,6 @@
 # HashTag
 hash is a library and two way data bind , to help you use javascript so fast in your web page
-
+### Button Definition
 Properties | Type | Values allowed | Default value 
 --- | --- | --- | --- 
 color | string | blue, yellow, blueLight, pink, green | blue 
