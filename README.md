@@ -2,6 +2,8 @@
 # HashTag
 hash is a library and two way data bind , to help you use javascript so fast in your web page
 
+ <img width="100px"  style="border-radius:50%" src="https://user-images.githubusercontent.com/49714406/129392154-c281e1d6-5001-4f27-afc1-c17c7748c352.png" align="center" alt="GitHub Readme Stats" />
+ 
 ![unnamed](https://user-images.githubusercontent.com/49714406/129392154-c281e1d6-5001-4f27-afc1-c17c7748c352.png)
 
 # Abastece-UÍ
