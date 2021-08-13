@@ -1,7 +1,7 @@
 # HashTag
 hash is a library and two way data bind , to help you use javascript so fast in your web page
 
-Properties | string | blue | yellow | blueLight | pink | green | #6 | #7 | #8 | #9 | #10 
+Properties | type | blue | yellow | blueLight | pink | green | #6 | #7 | #8 | #9 | #10 
 --- | --- | --- | --- |--- |--- |--- |--- |--- |--- |--- |---
 color | string | blue | yellow | blueLight | pink | green | #6 | #7 | #8 | #9 | #10 
 size | string| small | medium | large | 286 | 289 | 285 | 287 | 287 | 272 | 276 
