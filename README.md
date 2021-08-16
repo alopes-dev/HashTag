@@ -14,22 +14,42 @@ hash is a library and two way data bind , to help you use javascript so fast in 
 
 Clone the repository, and install the dependencies by running the following commands:
 
-## Clone the project
-
-```bash
-git clone https://gitlab.eai.com.br/project-grups/sites/ui-kit-front-web.git # git clone git@gitlab.eai.com.br:project-grups/sites/ui-kit-front-web.git
+```sh
+  $ git clone https://gitlab.eai.com.br/project-grups/sites/ui-kit-front-web.git
 ```
 
-## Install Dependencies
+Access the project on `ui-kit-front-web` directory:
 
-```bash
-yarn  # npm install
+```sh
+  $ cd ui-kit-front-web
 ```
 
-## Run Storybook
+Access the `Development` branch:
+
+```sh
+ $ git checkout develop
+```
+
+pull all `Development` changes:
+
+```sh
+ $ git pull origin Development
+```
+
+then install all dependencies :
+
+```sh
+ $ yarn # npm install
+```
+
+## Running the application
+
+Access the project folder and run the following command:
+
+### Run Storybook
 
 ```bash
-yarn storybook # npm run storybook
+$ yarn storybook # npm run storybook
 ```
 
 ## Run tests
