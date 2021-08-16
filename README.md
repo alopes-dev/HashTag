@@ -98,18 +98,16 @@ To make a commit must be used a following rule:
 
 `git commit -m "*type*: commit-message"`
 
-- Where type is: [ `build`, `chore`, `ci`, `docs`, `feat`, `fix`, `perf`, `refactor`, `revert`, `style`, `test` ]
-- And commit-message must be written in lower-case.
-  - e.g - `git commit -m"feat: set up eslint"`
+- Where type is: [ `Feature`, `Fix`, `Improvment` ]
 
 ## How to Contribute
 
-- Fetch/Pull the Develop Branch
-- Create a Branch based on your issue name
-  - e.g - Branch name is task/mc-(number)
-  - e.g - Branch name is bug/mc-(number)
-- Once done push your branch to origin and submit a PR to the Develop branch for review
-  - e.g - `git push origin task/mc-(number)`
+- Fetch/Pull the Development Branch
+- Create a Branch based on your type and issue name
+  - e.g - Branch name is Feature-readme
+  - e.g - Branch name is Fix-styleButton
+- Once done push your branch to origin and submit a MR to the Development branch for code review
+  - e.g - `git push origin Feature-readme`
 
 ## License
 
