@@ -27,7 +27,7 @@ Access the project on `ui-kit-front-web` directory:
 Access the `Development` branch:
 
 ```sh
- $ git checkout develop
+ $ git checkout Development
 ```
 
 pull all `Development` changes:
@@ -42,29 +42,30 @@ then install all dependencies :
  $ yarn # npm install
 ```
 
-## Running the application
+## Running and testing the application
 
 Access the project folder and run the following command:
 
-### Run Storybook
+#### Run Storybook
 
 ```bash
 $ yarn storybook # npm run storybook
 ```
 
-## Run tests
+#### Run tests
 
 ```bash
-yarn test # npm run test
+$ yarn test # npm run test
 ```
+## Building the application
 
-## Build Storybook
+#### Build Storybook
 
 ```bash
-yarn storybook:export # npm run storybook:export
+$ yarn storybook:export # npm run storybook:export
 ```
 
-## Build Project
+#### Build Project
 
 ```bash
 yarn prepublishOnly # npm run prepublishOnly
