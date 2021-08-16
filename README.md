@@ -19,7 +19,7 @@ git clone https://gitlab.eai.com.br/project-grups/sites/ui-kit-front-web.git # g
 ## Install Dependencies
 
 ```bash
-yarn add abastece-ui # npm install --save abastece-ui
+yarn  # npm install
 ```
 
 ## Run Storybook
