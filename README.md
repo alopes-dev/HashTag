@@ -10,6 +10,12 @@ hash is a library and two way data bind , to help you use javascript so fast in 
 
 [![NPM](https://img.shields.io/npm/v/abastece-ui.svg)](https://www.npmjs.com/package/abastece-ui) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
+## Clone the project
+
+```bash
+git clone https://gitlab.eai.com.br/project-grups/sites/ui-kit-front-web.git # git clone git@gitlab.eai.com.br:project-grups/sites/ui-kit-front-web.git
+```
+
 ## Install Dependencies
 
 ```bash
