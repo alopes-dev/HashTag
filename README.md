@@ -19,25 +19,25 @@ yarn add abastece-ui # npm install --save abastece-ui
 ## Run Storybook
 
 ```bash
-yarn add abastece-ui # npm install --save abastece-ui
+yarn storybook # npm run storybook
 ```
 
 ## Run tests
 
 ```bash
-yarn add abastece-ui # npm install --save abastece-ui
+yarn test # npm run test
 ```
 
 ## Build Storybook
 
 ```bash
-yarn add abastece-ui # npm install --save abastece-ui
+yarn storybook:export # npm run storybook:export
 ```
 
 ## Build Project
 
 ```bash
-yarn add abastece-ui # npm install --save abastece-ui
+yarn prepublishOnly # npm run prepublishOnly
 ```
 
 ## License
